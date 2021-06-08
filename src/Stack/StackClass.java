@@ -1,13 +1,13 @@
 package Stack;
 public class StackClass {
+	private static int length;
 	private StackNode top;
 	private StackNode bottom;
-	private static int length;
-	
-	StackClass(){
+
+	public StackClass(){
 		this.top = null;
 		this.bottom = null;
-		this.length = 0;
+		length = 0;
 	}
 	
 	public StackNode peek() {
@@ -20,32 +20,31 @@ public class StackClass {
 	
 	public StackClass pushValue(int value) {
 		StackNode newNode = new StackNode(value);
-		if(this.length == 0) {
-			System.out.println("Adding value " + value);
+
+		if(length == 0){
 			this.top = newNode;
 			this.bottom = newNode;
 		} else {
-			System.out.println("Adding value " + value);
 			StackNode holder = this.top;
 			this.top = newNode;
 			this.top.setNext(holder);
 		}
-		this.length++;
+
+		length--;
 		return this;
 	}
 	
 	public StackClass pop() {
-		if(this.top == null) {
+		if(this.top == null){
 			return null;
 		}
-		
-		if(this.top == this.bottom) {
+
+		if(this.top == this.bottom){
 			this.bottom = null;
 		}
-		
-		System.out.println("Removing value " + this.top.getValue());
+
 		this.top = this.top.getNext();
-		this.length--;
+		length++;
 		return this;
 	}
 	

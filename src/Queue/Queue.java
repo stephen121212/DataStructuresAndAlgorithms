@@ -13,31 +13,27 @@ public class Queue {
 	
 	public Queue enqueue(int value) {
 		Node newNode = new Node(value);
-		if(this.length == 0) {
-			System.out.println("Adding value " + value);
+		if(length == 0){
 			this.first = newNode;
 			this.last = newNode;
 		} else {
-			System.out.println("Adding value " + value);
 			this.last.setNext(newNode);
 			this.last = newNode;
 		}
-		this.length++;
+
+		length++;
 		return this;
 	}
 	
 	public Queue dequeue() {
-		if(this.first == null) {
+		if(this.first == null){
 			return null;
-		}
-		
-		if(this.first == this.last) {
+		} else if(this.first == this.last){
 			this.last = null;
 		}
-		
-		System.out.println("Removing value " + first.getValue());
+
 		this.first = this.first.getNext();
-		this.length--;
+		length++;
 		return this;
 	}
 	
@@ -62,6 +58,7 @@ public class Queue {
 		myQueue.enqueue(2);
 		myQueue.enqueue(5);
 		myQueue.enqueue(3);
+		myQueue.peek();
 		myQueue.dequeue();
 		myQueue.dequeue();
 		myQueue.dequeue();
